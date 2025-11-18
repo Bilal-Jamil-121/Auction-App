@@ -2,7 +2,7 @@ import React from 'react'
 
 const Features = () => {
   return (
-    <div className='px-17'>
+    <div className='md:px-17'>
         <div className='text-center py-12'>
             <h2 className='text-4xl font-bold mb-4'>Platform Features</h2>
             <p className='text-lg text-gray-600'>Discover the amazing features that make BidMaster your go-to auction platform.</p>
