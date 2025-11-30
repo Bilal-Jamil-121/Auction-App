@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const Feedback = () => {
+  const [valid, setValid] = useState(true);
+
+  const validateFeedback = (e) => {
+    e.preventDefault();
+
+    const buyerId = e.target.buyerId.value;
+    const sellerId = e.target.sellerId.value;
+    const rating = e.target.rating.value;
+    const comments = e.target.comments.value;
+
+  
+    if (!buyerId || !sellerId || !rating || !comments) {
+      setValid(false);
+      return;
+    }
+
+    setValid(true);
+
+    alert(
+      `Feedback Submitted!\nBuyer ID: ${buyerId}\nSeller ID: ${sellerId}\nRating: ${rating}\nComments: ${comments}`
+    );
+  };
+
   return (
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl p-8">
       <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
         Feedback & Ratings
       </h1>
 
-      <form className="space-y-6">
+      {!valid && (
+        <p className="text-red-500 text-center mb-4">Please fill in all fields</p>
+      )}
+
+      <form className="space-y-6" onSubmit={validateFeedback}>
         <div>
           <label className="block text-gray-700 mb-2 font-medium">
             Buyer ID
@@ -71,7 +98,7 @@ const Feedback = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Feedback
+export default Feedback;

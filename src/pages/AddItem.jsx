@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddItem = () => {
+  const [valid, setValid] = useState(true);
+
+  const validateItem = (e) => {
+    e.preventDefault();
+
+    const itemName = e.target.itemName.value;
+    const description = e.target.description.value;
+    const startingBid = e.target.startingBid.value;
+    const auctionEndDate = e.target.auctionEndDate.value;
+    const images = e.target.images.files;
+
+    // Basic validation (same style as previous forms)
+    if (!itemName || !description || !startingBid || !auctionEndDate || images.length === 0) {
+      setValid(false);
+      return;
+    }
+
+    setValid(true);
+
+    alert(
+      `Item Added!\n
+Item Name: ${itemName}
+Description: ${description}
+Starting Bid: ${startingBid}
+End Date: ${auctionEndDate}
+Images Uploaded: ${images.length}`
+    );
+  };
+
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100 py-10'>
       <div className='bg-white p-10 rounded-2xl shadow-xl w-full max-w-2xl'>
@@ -8,7 +37,11 @@ const AddItem = () => {
           Add Auction Item
         </h2>
 
-        <form className='space-y-6'>
+        {!valid && (
+          <p className="text-red-500 text-center mb-4">Please fill in all fields</p>
+        )}
+
+        <form className='space-y-6' onSubmit={validateItem}>
           <div>
             <label className='block text-gray-700 mb-2 font-medium'>Item Name</label>
             <input
@@ -87,3 +120,4 @@ const AddItem = () => {
 };
 
 export default AddItem;
+

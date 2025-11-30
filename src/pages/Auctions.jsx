@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Auctions = () => {
+  const [valid, setValid] = useState(true);
+
+  const myValidator = (e) => {
+    e.preventDefault();
+
+    const userId = e.target.userId.value;
+    const itemId = e.target.itemId.value;
+    const bidAmount = e.target.bidAmount.value;
+    
+    if (!userId || !itemId || !bidAmount) {
+      setValid(false);
+      return;
+    }
+
+    setValid(true);
+    alert(`Bid Submitted!\nUser ID: ${userId}\nItem ID: ${itemId}\nBid: ${bidAmount}`);
+  };
+
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100 py-10'>
       <div className='bg-white p-10 rounded-2xl shadow-xl w-full max-w-lg'>
@@ -8,7 +26,13 @@ const Auctions = () => {
           Bid Submission
         </h1>
 
-        <form className='space-y-6'>
+        {!valid && (
+          <p className='text-red-500 text-center mb-4'>
+            Please fill in all fields
+          </p>
+        )}
+
+        <form onSubmit={myValidator} className='space-y-6'>
           <div>
             <label className='block text-gray-700 mb-2 font-medium'>User ID</label>
             <input

@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const myValidator = (e) => {
+
+
+const Login = () => {
+  const [valid, setValid] = useState(true);
+  const myValidator = (e) => {
   e.preventDefault(); 
 
   const username = e.target.username.value;
@@ -11,20 +16,23 @@ const myValidator = (e) => {
 
   // Basic validation
   if (!username || !email || !password) {
-    alert("Please fill in all fields");
+    setValid(false);
     return;
   }
 
 
 
   alert(`Welcome ${username}! You logged in as ${role}`);
+  setValid(true);
 };
 
-const Login = () => {
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100 '>
+      
       <div className='bg-white mt-2 p-10 rounded-2xl shadow-xl w-full max-w-md'>
+       
         <h2 className='text-3xl font-bold mb-8 text-center text-gray-800'>Login to Your Account</h2>
+         {!valid && <p className="text-red-500 text-center mb-4">Please fill in all fields</p>}
         <form className='space-y-6' onSubmit={myValidator}>
           <div>
             <label  className='block text-gray-700 mb-2 font-medium'>Username</label>
