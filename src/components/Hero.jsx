@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className='md:flex pt-2 md:px-17 md:mx-0 mx-3 gap-4'>
       <div className='md:w-1/2 md:rounded-2xl shadow-xl bg-blue-500 text-white flex flex-col justify-center items-center p-10'>
-        <h1 className='text-5xl font-bold mb-6'>Welcome to BidMaster</h1>
+        <h1 className='text-5xl font-bold mb-6'>Welcome to AuctionX</h1>
             <p className='text-lg mb-8'>Your ultimate platform for online auctions and bidding.</p>
             <button className='bg-white text-blue-500 font-semibold px-6 py-3 rounded hover:bg-gray-200 transition duration-300'> <Link to="/Login">Get Started</Link></button>
       </div>

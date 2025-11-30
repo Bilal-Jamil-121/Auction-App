@@ -5,7 +5,7 @@ const Features = () => {
     <div className='md:px-17'>
         <div className='text-center py-12'>
             <h2 className='text-4xl font-bold mb-4'>Platform Features</h2>
-            <p className='text-lg text-gray-600'>Discover the amazing features that make BidMaster your go-to auction platform.</p>
+            <p className='text-lg text-gray-600'>Discover the amazing features that make AuctionX your go-to auction platform.</p>
         </div>
         <div className='md:flex md:justify-center md:gap-8 px-4'>
             <div className='md:w-1/3  bg-gray-200 hover:bg-gray-300 shadow-lg rounded-lg p-6 mb-6 md:mb-0'>
